@@ -1,0 +1,8 @@
+/*
+-- Query: 
+-- Date: 2020-05-10 19:10
+*/
+INSERT INTO `` (`mid`,`Menu_name`,`mt_id`,`Price`) VALUES (1,'ข้าวราดแกง',1,25);
+INSERT INTO `` (`mid`,`Menu_name`,`mt_id`,`Price`) VALUES (2,'ข้าวหมกไก่',1,30);
+INSERT INTO `` (`mid`,`Menu_name`,`mt_id`,`Price`) VALUES (3,'แกงกระหรี่',2,5);
+INSERT INTO `` (`mid`,`Menu_name`,`mt_id`,`Price`) VALUES (3,'น้ำดื่ม',3,10);

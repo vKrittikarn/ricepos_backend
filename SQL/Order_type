@@ -1,0 +1,6 @@
+/*
+-- Query: 
+-- Date: 2020-05-10 19:11
+*/
+INSERT INTO `` (`order_type_id`,`order_type_name`) VALUES (1,'เงินสด');
+INSERT INTO `` (`order_type_id`,`order_type_name`) VALUES (2,'โอนเงิน');

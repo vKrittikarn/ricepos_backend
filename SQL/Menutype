@@ -1,0 +1,7 @@
+/*
+-- Query: 
+-- Date: 2020-05-10 19:10
+*/
+INSERT INTO `` (`mt_id`,`mt_name`) VALUES (1,'ข้าว');
+INSERT INTO `` (`mt_id`,`mt_name`) VALUES (2,'กับข้าว');
+INSERT INTO `` (`mt_id`,`mt_name`) VALUES (3,'เครื่องดื่ม');
