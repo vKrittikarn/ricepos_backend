@@ -141,7 +141,6 @@ module.exports = (function () {
               },
             }
           );
-          console.log("test");
           return h.response(index);
         },
       },
