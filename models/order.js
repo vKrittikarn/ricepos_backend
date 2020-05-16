@@ -1,38 +1,42 @@
 "use strict";
 
 module.exports = function (sequelize, DataTypes) {
-  const Menu = sequelize.define(
-    "Menu",
+  const Order = sequelize.define(
+    "Order",
     {
-      mid: {
+      order_id: {
         type: DataTypes.BIGINT,
         primaryKey: true,
         autoIncrement: true,
       },
-      Menu_name: {
-        type: DataTypes.STRING,
+      order_date: {
+        type: DataTypes.DATE,
         allowNull: false,
       },
-      mt_id: {
+      Total_price: {
         type: DataTypes.BIGINT,
         allowNull: false,
       },
-      Price: {
+      Change: {
         type: DataTypes.DOUBLE,
         allowNull: false,
       },
-      image: {
-        type: DataTypes.STRING,
-        allowNull: true,
+      order_type_id: {
+        type: DataTypes.BIGINT,
+        allowNull: false,
+      },
+      uid: {
+        type: DataTypes.BIGINT,
+        allowNull: false,
       },
     },
     {
       timestamps: false,
       paranoid: false,
       underscored: true,
-      tableName: "Menu",
+      tableName: "Order",
     }
   );
 
-  return Menu;
+  return Order;
 };

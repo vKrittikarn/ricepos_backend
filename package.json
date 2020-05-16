@@ -1,9 +1,9 @@
 {
-  "name": "hapi-playground",
+  "name": "ricepos_backend",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon --inspect app.js"
   },
   "dependencies": {
     "boom": "^7.3.0",
