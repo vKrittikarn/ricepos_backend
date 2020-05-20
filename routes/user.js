@@ -24,7 +24,9 @@ module.exports = (function () {
               "Lname",
             ],
           });
-
+          if (user == null) {
+            return Boom.notFound("User not found");
+          }
           return h.response(user);
         },
       },
@@ -93,7 +95,7 @@ module.exports = (function () {
             Lname: req.payload.lname,
           });
 
-          if (user.uid == "") {
+          if (user == null) {
             return Boom.badRequest("Cannot insert user");
           }
 
@@ -116,7 +118,7 @@ module.exports = (function () {
         },
         handler: async (req, h) => {
           const user = await Models.User.findByPk(req.params.id);
-          if (!user) {
+          if (user == null) {
             return Boom.badRequest("Cannot delete user");
           }
           const index = await Models.User.destroy({
@@ -150,7 +152,7 @@ module.exports = (function () {
         handler: async (req, h) => {
           const user = await Models.user.findByPk(req.payload.id);
           let tmpPassword = "";
-          if (!user) {
+          if (user == null) {
             return Boom.badRequest("Cannot update user");
           }
           if (req.payload.password.length != 32) {

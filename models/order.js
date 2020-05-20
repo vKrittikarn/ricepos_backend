@@ -11,7 +11,7 @@ module.exports = function (sequelize, DataTypes) {
       },
       order_date: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
       },
       Total_price: {
         type: DataTypes.BIGINT,

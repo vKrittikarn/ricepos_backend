@@ -67,6 +67,15 @@ async function start() {
 
   server.auth.default("jwt");
 
+  await server.register([
+    require("inert"),
+    require("vision"),
+    {
+      plugin: HapiSwagger,
+      options: swaggerOptions,
+    },
+  ]);
+
   for (const i in Routes) {
     server.route(Routes[i]);
   }
@@ -107,19 +116,6 @@ async function start() {
     },
     security: [{ jwt: [] }],
   };
-
-  if ("production" === process.env.NODE_ENV) {
-    swaggerOptions.host = process.env.HEROKU_APP_NAME + ".herokuapp.com";
-  }
-
-  await server.register([
-    require("inert"),
-    require("vision"),
-    {
-      plugin: HapiSwagger,
-      options: swaggerOptions,
-    },
-  ]);
 
   try {
     await server.start();

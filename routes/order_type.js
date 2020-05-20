@@ -17,6 +17,10 @@ module.exports = (function () {
             attributes: ["order_type_id", "order_type_name"],
           });
 
+          if (order_type == null) {
+            return Boom.notFound("Type of order not found");
+          }
+
           return h.response(order_type);
         },
       },
@@ -44,7 +48,7 @@ module.exports = (function () {
 
           if (order_type == null) {
             return Boom.notFound(
-              "order_type not found with id: " + req.params.id
+              "Type of order not found with id: " + req.params.id
             );
           }
 
@@ -70,8 +74,8 @@ module.exports = (function () {
             order_type_name: req.payload.name,
           });
 
-          if (order_type.order_type_id == "") {
-            return Boom.badRequest("Cannot insert order_type");
+          if (order_type == null) {
+            return Boom.badRequest("Cannot insert type of order");
           }
 
           return h.response("inserted " + order_type.order_type_id);
@@ -93,8 +97,8 @@ module.exports = (function () {
         },
         handler: async (req, h) => {
           const order_type = await Models.Order_type.findByPk(req.params.id);
-          if (!order_type) {
-            return Boom.badRequest("Cannot delete order_type");
+          if (order_type == null) {
+            return Boom.badRequest("Cannot delete type of order");
           }
           const index = await Models.Order_type.destroy({
             where: {
@@ -122,8 +126,8 @@ module.exports = (function () {
         },
         handler: async (req, h) => {
           const order_type = await Models.Order_type.findByPk(req.payload.id);
-          if (!order_type) {
-            return Boom.badRequest("Cannot update order_type");
+          if (order_type == null) {
+            return Boom.badRequest("Cannot update type of order");
           }
           const index = await Models.Order_type.update(
             {
