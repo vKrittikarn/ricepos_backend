@@ -160,36 +160,50 @@ module.exports = (function () {
       method: "PUT",
       path: "/menu",
       config: {
-        description: "Delete menu",
-        notes: "Delete menu",
+        description: "Update menu",
+        notes: "Update menu",
         tags: ["api"],
         auth: "jwt",
+        payload: {
+          maxBytes: 20715200,
+          output: "stream",
+          parse: true,
+          allow: "multipart/form-data",
+        },
         validate: {
           payload: {
             id: Joi.number().integer().required(),
             name: Joi.string().required(),
             type: Joi.number().integer().required(),
             price: Joi.number().required(),
+            file: Joi.any()
+              .meta({ swaggerType: "file" })
+              .optional()
+              .allow("")
+              .description("image file"),
           },
         },
         handler: async (req, h) => {
           const menu = await Models.Menu.findByPk(req.payload.id);
+          const tmpParams = {
+            Menu_name: req.payload.name,
+            mt_id: req.payload.type,
+            Price: req.payload.price,
+          };
           if (menu == null) {
             return Boom.badRequest("Cannot update menu");
           }
-          const index = await Models.Menu.update(
-            {
-              Menu_name: req.payload.name,
-              mt_id: req.payload.type,
-              Price: req.payload.price,
+          if (req.payload.file) {
+            const tmpUpload = await uploadHandler(req.payload.file);
+            tmpParams.image = tmpUpload.filename;
+          }
+          const index = await Models.Menu.update(tmpParams, {
+            where: {
+              mid: req.payload.id,
             },
-            {
-              where: {
-                mid: req.payload.id,
-              },
-            }
-          );
-          return h.response(index);
+          });
+
+          return h.response(menu.mid);
         },
       },
     },

@@ -21,7 +21,6 @@
     "mysql2": "^2.1.0",
     "sequelize": "^5.6.0",
     "sequelize-cli": "^5.4.0",
-    "sqlite3": "^4.0.6",
     "vision": "^5.4.4"
   },
   "my_app": {

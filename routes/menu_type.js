@@ -8,8 +8,8 @@ module.exports = (function () {
       method: "GET",
       path: "/menu_type",
       config: {
-        description: "Get all menu_type",
-        notes: "retrieve menu_type",
+        description: "Get all type of menu",
+        notes: "retrieve type of menu",
         tags: ["api"],
         auth: "jwt",
         handler: async (req, h) => {
@@ -29,8 +29,8 @@ module.exports = (function () {
       method: "GET",
       path: "/menu_type/{id}",
       config: {
-        description: "Get menu_type by id",
-        notes: "retrieve menu_type via id",
+        description: "Get type of menu by id",
+        notes: "retrieve type of menu via id",
         tags: ["api"],
         auth: "jwt",
         validate: {
@@ -60,8 +60,8 @@ module.exports = (function () {
       method: "POST",
       path: "/menu_type",
       config: {
-        description: "Insert menu_type",
-        notes: "Insert menu_type",
+        description: "Insert type of menu",
+        notes: "Insert type of menu",
         tags: ["api"],
         auth: "jwt",
         validate: {
@@ -86,8 +86,8 @@ module.exports = (function () {
       method: "DELETE",
       path: "/menu_type/{id}",
       config: {
-        description: "Delete menu_type",
-        notes: "Delete menu_type",
+        description: "Delete type of menu",
+        notes: "Delete type of menu",
         tags: ["api"],
         auth: "jwt",
         validate: {
@@ -114,8 +114,8 @@ module.exports = (function () {
       method: "PUT",
       path: "/menu_type",
       config: {
-        description: "Delete menu_type",
-        notes: "Delete menu_type",
+        description: "Update type of menu",
+        notes: "Update type of menu",
         tags: ["api"],
         auth: "jwt",
         validate: {
@@ -139,7 +139,7 @@ module.exports = (function () {
               },
             }
           );
-          return h.response(index);
+          return h.response(menu_type.mt_id);
         },
       },
     },

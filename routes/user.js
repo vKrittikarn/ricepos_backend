@@ -99,7 +99,7 @@ module.exports = (function () {
             return Boom.badRequest("Cannot insert user");
           }
 
-          return h.response("inserted " + user.uid);
+          return h.response(user.uid);
         },
       },
     },
@@ -135,8 +135,8 @@ module.exports = (function () {
       method: "PUT",
       path: "/user",
       config: {
-        description: "Delete user",
-        notes: "Delete user",
+        description: "Update user",
+        notes: "Update user",
         tags: ["api"],
         auth: "jwt",
         validate: {
@@ -150,7 +150,7 @@ module.exports = (function () {
           },
         },
         handler: async (req, h) => {
-          const user = await Models.user.findByPk(req.payload.id);
+          const user = await Models.User.findByPk(req.payload.id);
           let tmpPassword = "";
           if (user == null) {
             return Boom.badRequest("Cannot update user");
@@ -172,11 +172,11 @@ module.exports = (function () {
             },
             {
               where: {
-                mid: req.payload.id,
+                uid: req.payload.id,
               },
             }
           );
-          return h.response(index);
+          return h.response(user.uid);
         },
       },
     },

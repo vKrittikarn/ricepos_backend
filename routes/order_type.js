@@ -8,8 +8,8 @@ module.exports = (function () {
       method: "GET",
       path: "/order_type",
       config: {
-        description: "Get all order_type",
-        notes: "retrieve order_type",
+        description: "Get all type of order",
+        notes: "retrieve type of order",
         tags: ["api"],
         auth: "jwt",
         handler: async (req, h) => {
@@ -29,8 +29,8 @@ module.exports = (function () {
       method: "GET",
       path: "/order_type/{id}",
       config: {
-        description: "Get order_type by id",
-        notes: "retrieve order_type via id",
+        description: "Get type of order by id",
+        notes: "retrieve type of order via id",
         tags: ["api"],
         auth: "jwt",
         validate: {
@@ -60,8 +60,8 @@ module.exports = (function () {
       method: "POST",
       path: "/order_type",
       config: {
-        description: "Insert order_type",
-        notes: "Insert order_type",
+        description: "Insert type of order",
+        notes: "Insert type of order",
         tags: ["api"],
         auth: "jwt",
         validate: {
@@ -86,8 +86,8 @@ module.exports = (function () {
       method: "DELETE",
       path: "/order_type/{id}",
       config: {
-        description: "Delete order_type",
-        notes: "Delete order_type",
+        description: "Delete type of order",
+        notes: "Delete type of order",
         tags: ["api"],
         auth: "jwt",
         validate: {
@@ -114,8 +114,8 @@ module.exports = (function () {
       method: "PUT",
       path: "/order_type",
       config: {
-        description: "Delete order_type",
-        notes: "Delete order_type",
+        description: "Update type of order",
+        notes: "Update type of order",
         tags: ["api"],
         auth: "jwt",
         validate: {
@@ -139,7 +139,7 @@ module.exports = (function () {
               },
             }
           );
-          return h.response(index);
+          return h.response(order_type.order_type_id);
         },
       },
     },

@@ -83,8 +83,8 @@ module.exports = (function () {
       method: "GET",
       path: "/order/{id}",
       config: {
-        description: "Get all order",
-        notes: "retrieve order",
+        description: "Get order by id",
+        notes: "retrieve order by id",
         tags: ["api"],
         auth: "jwt",
         validate: {

@@ -4,7 +4,7 @@ const jwtGenerator = (data) => {
   return JWT.sign(
     {
       data: data,
-      exp: Math.floor(Date.now() / 1000) + 60 * 10,
+      exp: Math.floor(Date.now() / 1000) + 60 * 180,
     },
     Pack.my_app.secret_key
   );
